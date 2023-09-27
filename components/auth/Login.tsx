@@ -1,6 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
-import {HiOutLineX} from "react-icons/hi"
+
 
 
 
@@ -20,7 +20,7 @@ export default function Login(){
                 onClick={()=>setIsAlertToggled(!isAlertToggled)}
                 className="justify-end "
                >
-                 <HiOutLineX className="h-6 w-6"/>
+                
                </button>
 
             </div>
