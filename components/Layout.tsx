@@ -13,7 +13,7 @@ type Prop ={
 
 export default function Layout({children}:Prop){
     return(
-        <div className={`${roboto.className} bg-gray-50`}>
+        <div className={`${roboto.className} bg-gray-100 `}>
           <div className="mx:4 md:mx-48">
             <Nav/>
             {children}
