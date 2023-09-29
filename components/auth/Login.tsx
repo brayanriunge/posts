@@ -5,12 +5,12 @@ import { useState } from "react";
 import {HiOutlineX} from "react-icons/hi"
 import {CgProfile} from "react-icons/cg"
 
-type User={
-  image: string
+// type User={
+//   image: string
 
-}
+// }
 
-export default function Login({image}:User){
+export default function Login(){
     const [isAlertToggled, setIsAlertToggled]= useState<boolean>(true)
     const handleClick= ()=>{
       setIsAlertToggled(!isAlertToggled)
