@@ -24,7 +24,7 @@ export default async function handler(
    //find User
    const prismaUser = await prisma.user.findUnique({
     where: { email: userEmail}
-  })
+   })
  
    
     
@@ -51,7 +51,7 @@ export default async function handler(
      return res.status(200).json(result)
      
     } catch (error) {
-     return res.status(403).json({message:"An error occured while making a post "})
+     return res.status(403).json({message:"An error occurred while making a post "})
     }
  }
 }
