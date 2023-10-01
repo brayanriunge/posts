@@ -1,10 +1,39 @@
+import { error } from "console";
 import { useState } from "react"
+import { json } from "stream/consumers"
 
 export default function CreatePost(){
     const [title, setTitle]= useState("")
     const [isDisabled, setIsDisabled]= useState(false)
+
+    async function  createPost(e: React.FormEvent){
+        e.preventDefault()
+        setIsDisabled(true)
+        try{
+         const response= await fetch("/api/posts/addPost", {
+            method: "POST",
+            headers: {
+                "contentType": "application/json"
+            },
+            body: JSON.stringify({title})
+         })
+         if(!response.ok){
+            throw new Error (`HTTP error! status: ${response.status}`)
+         }
+         const data = await response.json()
+         return(data) 
+        // console.log(data)
+        }catch(error){
+            console.error("Error:", error);
+        }
+        
+    }
+
     return(
-        <form className="bg-white p-8 my-8 rounded-md">
+        <form
+         onSubmit={createPost} 
+         className="bg-white p-8 my-8 rounded-md"
+        >
             <div className="flex flex-col my-4 ">
                 <textarea
                  name="title"
