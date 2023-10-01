@@ -16,27 +16,28 @@ export default async function handler(
    if(!session){
     return res.status(401).json({message:"You must be logged in first."})
    }
+   console.log(req.body)
    const title: string= req.body.title
-   const userEmail= session.user?.email
-   let prismaUser = null
+   const userEmail= session.user?.email!
+   
 
    //find User
-   if(userEmail){
-    const prismaUser = await prisma.user.findUnique({
-      where: { email: userEmail}
-    })
-   }
+   const prismaUser = await prisma.user.findUnique({
+    where: { email: userEmail}
+  })
+ 
    
     
   
 
     // check title
+    if(!title){
+      return res.status(400).json({message: "This field should not be empty"})
+     }
     if(title.length > 300){
      return res.status(403).json({message:"This field requires 300 characters"})
     }
-    if(!title.length){
-     return res.status(403).json({message: "This field should not be empty"})
-    }
+  
 
     //create post
     try {
@@ -46,6 +47,9 @@ export default async function handler(
        userId: prismaUser!.id,
       }
      })
+     console.log(result)
+     return res.status(200).json(result)
+     
     } catch (error) {
      return res.status(403).json({message:"An error occured while making a post "})
     }
