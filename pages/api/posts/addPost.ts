@@ -18,14 +18,16 @@ export default async function handler(
    }
    const title: string= req.body.title
    const userEmail= session.user?.email
+   let prismaUser = null
 
    //find User
    if(userEmail){
-     const prismaUser = await prisma.user.findUnique({
+    const prismaUser = await prisma.user.findUnique({
       where: { email: userEmail}
-     })
-    }
-  
+    })
+   }
+   
+    
   
 
     // check title
@@ -41,13 +43,11 @@ export default async function handler(
      const result = await prisma.post.create({
      data:{
        title,
-       userId: prisma
+       userId: prismaUser!.id,
       }
      })
     } catch (error) {
      return res.status(403).json({message:"An error occured while making a post "})
     }
  }
- 
-
 }
