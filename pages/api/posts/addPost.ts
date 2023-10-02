@@ -18,12 +18,12 @@ export default async function handler(
    }
    console.log(req.body)
    const title: string= req.body.title
-   const userEmail= session?.user?.email!
+  
    
 
    //find User
-   const prismaUser = await prisma.user.findUnique({
-    where: { email: userEmail}
+   const user = await prisma.user.findUnique({
+    where: { email: session?.user?.email as string}
    })
 
     // check title
@@ -40,7 +40,7 @@ export default async function handler(
      const result = await prisma.post.create({
      data:{
        title,
-       userId: prismaUser!.id,
+       userId: user?.id as string,
       }
      })
      console.log(result)
