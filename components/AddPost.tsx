@@ -1,6 +1,6 @@
-import { error } from "console";
+import { error } from "console"
 import { useState } from "react"
-import { json } from "stream/consumers"
+
 
 export default function CreatePost(){
     const [title, setTitle]= useState("")
@@ -9,23 +9,25 @@ export default function CreatePost(){
     async function  createPost(e: React.FormEvent){
         e.preventDefault()
         setIsDisabled(true)
-        try{
-         const response= await fetch("/api/posts/addPost", {
+       
+        fetch("/api/posts/addPost", {
             method: "POST",
             headers: {
                 "contentType": "application/json"
             },
             body: JSON.stringify({title})
-         })
-         if(!response.ok){
-            throw new Error (`HTTP error! status: ${response.status}`)
-         }
-         const data = await response.json()
-         return(data) 
-        // console.log(data)
-        }catch(error){
-            console.error("Error:", error);
-        }
+        })
+        .then(async (response)=>{
+            if(!response.ok){
+                throw new Error(`Http Error! ${response.status}`)
+            }
+            const data = await response.json()
+            return data
+        })
+        .catch(error=>{
+            console.log("Error", error)
+        })
+        
         
     }
 
