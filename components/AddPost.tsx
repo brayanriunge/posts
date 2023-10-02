@@ -9,11 +9,12 @@ export default function CreatePost(){
     async function  createPost(e: React.FormEvent){
         e.preventDefault()
         setIsDisabled(true)
+        setTitle("")
        
-        fetch("/api/posts/addPost", {
+        fetch("http://localhost:3001/api/posts/addPost", {
             method: "POST",
             headers: {
-                "contentType": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({title})
         })
