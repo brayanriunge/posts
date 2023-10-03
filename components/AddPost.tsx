@@ -1,17 +1,20 @@
 import { error } from "console"
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 
 export default function CreatePost(){
     const [title, setTitle]= useState("")
     const [isDisabled, setIsDisabled]= useState(false)
+    let toastPostId : string
 
     async function  createPost(e: React.FormEvent){
         e.preventDefault()
-        setIsDisabled(true)
+        toast.loading("creating post", {id: toastPostId})
+        setIsDisabled(false)
         setTitle("")
        
-        fetch("http://localhost:3001/api/posts/addPost", {
+        fetch("http://localhost:3000/api/posts/addPost", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -21,6 +24,8 @@ export default function CreatePost(){
         .then(async (response)=>{
             if(!response.ok){
                 throw new Error(`Http Error! ${response.status}`)
+            }else{
+                toast.success("post has been made", {id: toastPostId})
             }
             const data = await response.json()
             return data
