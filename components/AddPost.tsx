@@ -17,29 +17,30 @@ export default function CreatePost({fetchPosts}: AddPostProp){
         toast.loading("creating post", {id: toastPostId})
         setIsDisabled(false)
         setTitle("")
-       
-        fetch("http://localhost:3000/api/posts/addPost", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({title})
-        })
-        .then(async (response)=>{
+
+        try{
+            const response = await fetch("http://localhost:3000/api/posts/addPost", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({title})
+            })
             if(!response.ok){
                 throw new Error(`Http Error! ${response.status}`)
             }else{
                 fetchPosts()
                 toast.success("post has been made", {id: toastPostId})
             }
-
-          
             const data = await response.json()
             return data
-        })
-        .catch(error=>{
+        }catch(error){
             console.log("Error", error)
-        })
+        }
+           
+        
+       
+        
         
         
     }
