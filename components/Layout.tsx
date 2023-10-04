@@ -20,7 +20,10 @@ export default function Layout({children}:Prop){
             <Toaster
               toastOptions={{
                 loading:{
-                  duration:3000
+                  duration:1000
+                },
+                success:{
+                  duration:2000
                 }
               }}
             />
