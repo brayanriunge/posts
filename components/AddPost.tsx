@@ -2,8 +2,12 @@ import { error } from "console"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
+type AddPostProp={
+    fetchPosts:()=> void
+}
 
-export default function CreatePost(){
+
+export default function CreatePost({fetchPosts}: AddPostProp){
     const [title, setTitle]= useState("")
     const [isDisabled, setIsDisabled]= useState(false)
     let toastPostId : string
@@ -25,8 +29,11 @@ export default function CreatePost(){
             if(!response.ok){
                 throw new Error(`Http Error! ${response.status}`)
             }else{
+                fetchPosts()
                 toast.success("post has been made", {id: toastPostId})
             }
+
+          
             const data = await response.json()
             return data
         })
