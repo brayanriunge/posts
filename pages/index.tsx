@@ -35,7 +35,7 @@ export default function Home() {
    <Layout >
    
     <AddPost fetchPosts={fetchPosts}/>
-    {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} />)}
+    {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} />)}
    </Layout>
   )
 }

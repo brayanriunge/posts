@@ -1,4 +1,3 @@
-import { error } from "console"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
@@ -37,12 +36,7 @@ export default function CreatePost({fetchPosts}: AddPostProp){
         }catch(error){
             console.log("Error", error)
         }
-           
-        
-       
-        
-        
-        
+
     }
 
     return(
