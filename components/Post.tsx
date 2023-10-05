@@ -1,13 +1,12 @@
 import Link from "next/link"
 
-type props={
-    name: string
-    postTitle: string
-    id:string
-    comments: string
-  
-}
-export default function Post({name, postTitle, id,comments} : props){
+// type props={
+//     name: string
+//     postTitle: string
+//     id:string
+//     comments: string
+// }
+export default function Post({name, postTitle, id,comments}:any){
     return(
         <div className="my-8 p-8 mb-0 rounded-xl bg-white">
             <div className="flex items-center gap-2">

@@ -3,14 +3,23 @@ import Layout from '@/components/Layout'
 import AddPost from "@/components/AddPost"
 
 import { useEffect, useState } from 'react'
-import Post from '@/components/Posts'
+import Post from '@/components/Post'
 
-interface PostData{
+
+
+export interface PostData{
   id: string,
+  title: string,
+  createdAt: string,
   user:{
     name:string,
+  },
+  comment: {
+    id: string,
+    createdAt: string,
+    postId: string,
+    userId: string,
   }
-  title: string
 }
 
 export default function Home() {
@@ -35,7 +44,7 @@ export default function Home() {
    <Layout >
    
     <AddPost fetchPosts={fetchPosts}/>
-    {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} />)}
+    {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} comments={post.comment}  />)}
    </Layout>
   )
 }
