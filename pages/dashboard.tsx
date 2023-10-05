@@ -14,6 +14,9 @@ export default async function Dashboard(){
         window.location.href= "/api/auth/signin"
     }
    },[session])
+   if(!session){
+    return null
+   }
     return(
         <div>
             <h1 className="text-sm ">welcome back {session?.user?.name}</h1>
