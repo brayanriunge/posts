@@ -11,7 +11,7 @@ export default async function Dashboard(){
     const router = useRouter()
    useEffect(()=>{
     if(!session){
-        window.location.href= "/api/auth/signin"
+        
     }
    },[session])
    if(!session){
