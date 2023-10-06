@@ -12,7 +12,7 @@ export default  function Nav(){
         <section  >
            <div className="flex  justify-between items-center">
             <Link href="/">
-                 <h1 className="text-lg font-bold">Send It.</h1>
+                 <h1 className="text-lg font-bold">Mental health</h1>
             </Link>
             <ul className="">
                 <Login/>

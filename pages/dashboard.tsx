@@ -11,7 +11,8 @@ export default async function Dashboard(){
     const router = useRouter()
    useEffect(()=>{
     if(!session){
-        
+        router.replace("/api/auth/signin")
+    //directing the user to sign in if he/she has not signed in
     }
    },[session])
    if(!session){
