@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout"
+import MyPost from "@/components/MyPost"
 import { useSession } from "next-auth/react"
 import { redirect } from "next/dist/server/api-utils"
 import { useRouter } from "next/router"
@@ -17,6 +18,7 @@ export default function Dashboard(){
         <Layout>
             <section className=" min-h-full">
             <h1 className="text-2xl font-bold">welcome back {session?.user?.name}</h1>
+            <MyPost/>
             </section>
         </Layout>
        

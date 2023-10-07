@@ -14,10 +14,20 @@ export default async function handler(
         }
       
         try {
-            const data = await prisma.post.findUnique({
+            const data = await prisma.user.findUnique({
              where:{
                 email: session.user?.email as string
-               }
+               },
+               include:{
+                 posts:{
+                  orderBy:{
+                     createdAt: "desc",
+                  },
+                  include:{
+                     comment: true
+                  }
+                 }
+                }
             })
         } catch (error) {
             console.log(error)
