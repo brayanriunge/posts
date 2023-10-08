@@ -16,7 +16,7 @@ export default function Login(){
       setIsAlertToggled(!isAlertToggled)
     }
     const {data:session, } = useSession()
-    console.log(session?.user)
+   
   
     if(session){
         return(

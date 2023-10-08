@@ -29,8 +29,9 @@ export default async function handler(
                  }
                 }
             })
+            res.status(200).json(data)
         } catch (error) {
-            console.log(error)
+           res.status(403).json({error:"error fetching Auth posts"})
             
         }
     }

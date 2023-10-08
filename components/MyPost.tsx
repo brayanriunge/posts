@@ -1,15 +1,16 @@
 import { AuthPosts } from "@/types/AuthPost"
 import { useEffect, useState } from "react"
+import EditPost from "./EditPost"
 
 
 export default function MyPost(){
-    const [post, setPost] = useState<AuthPosts>()
+    const [editPost, setAuthPost] = useState<AuthPosts[]>([])
     const fetchMyPost = async ()=>{
         try {
          const response = await fetch("http://localhost:3000/api/posts/authPost")
          const data = await response.json()
          console.log(data)
-         setPost(data)
+         setAuthPost(data)
         } catch (error) {
          console.log(error)
         }
@@ -19,7 +20,7 @@ export default function MyPost(){
      },[])
     return(
         <div>
-            data
+          {editPost.map((post)=> <EditPost key={post.id} name={post.name} id={post.id} title={post.post.title} comments={post.post.comments}/>)}
         </div>
     )
 }
