@@ -4,13 +4,13 @@ import EditPost from "./EditPost"
 
 
 export default function MyPost(){
-    const [editPost, setAuthPost] = useState<AuthPosts[]>([])
+    const [editPosts, setEditPosts] = useState<AuthPosts[]>([])
     const fetchMyPost = async ()=>{
         try {
          const response = await fetch("http://localhost:3000/api/posts/authPost")
          const data = await response.json()
          console.log(data)
-         setAuthPost(data)
+         setEditPosts(data)
         } catch (error) {
          console.log(error)
         }
@@ -18,9 +18,10 @@ export default function MyPost(){
      useEffect(()=>{
          fetchMyPost()
      },[])
+     console.log(editPosts)
     return(
         <div>
-          {editPost.map((post)=> <EditPost key={post.id} name={post.name} id={post.id} title={post.posts.title} comments={post.posts.comments}/>)}
+          {editPosts.map((post)=> <EditPost key={post.id} title={post.posts.title} comments={post.posts.comments} name={post.name} id={post.id}/>)}
         </div>
     )
 }
