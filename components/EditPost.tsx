@@ -2,11 +2,12 @@ type EditProps={
     id:string
     name:string
     title: string
-    comments?:{
-        id:string
-        postId: string
-        userId: string
-    }
+    comments: true
+    // comment?:{
+    //     id:string
+    //     postId: string
+    //     userId: string
+    // }
 }
 
 export default function EditPost({name, id, title, comments}:EditProps){

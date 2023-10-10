@@ -32,6 +32,7 @@ export default function CreatePost({fetchPosts}: AddPostProp){
                 toast.success("post has been made", {id: toastPostId})
             }
             const data = await response.json()
+            console.log(data)
             return data
         }catch(error){
             console.log("Error", error)
