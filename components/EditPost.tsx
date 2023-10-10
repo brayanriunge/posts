@@ -2,15 +2,14 @@ type EditProps={
     id:string
     name:string
     title: string
-    comments: true
-    // comment?:{
-    //     id:string
-    //     postId: string
-    //     userId: string
-    // }
+    comment?:{
+        id:string
+        postId: string
+        userId: string
+    }[]
 }
 
-export default function EditPost({name, id, title, comments}:EditProps){
+export default function EditPost({name, id, title, comment}:EditProps){
     return(
         <div className="bg-white my-8 p-8 rounded-lg">
           <div >
@@ -21,7 +20,7 @@ export default function EditPost({name, id, title, comments}:EditProps){
           </div>
           <div className="flex items-center gap-4">
             <p className="text-sm font-bold text-gray-700">
-                Comments
+                {comment?.length} Comments
             </p>
           </div>
         </div>

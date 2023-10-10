@@ -22,7 +22,7 @@ export default function MyPost(){
     return(
         <div>
             hey
-            {editPosts?.posts.map((post)=> <EditPost key={post.id} id={post.id} name={editPosts.name} title={post.title} comments={post.comments}/>)}
+            {editPosts?.posts.map((post)=> <EditPost key={post.id} id={post.id} name={editPosts.name} title={post.title} comment={post.comment}/>)}
         </div>
     )
 }
