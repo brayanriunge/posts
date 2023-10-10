@@ -15,18 +15,18 @@ export default async function handler(
       
         try {
             const data = await prisma.user.findUnique({
-             where:{
-                email: session.user?.email as string
-               },
-               include:{
-                 posts:{
-                  orderBy:{
-                     createdAt: "desc",
-                  },
-                  include:{
-                     comment: true
-                  }
-                 }
+                where:{
+                    email: session.user?.email as string
+                },
+                include:{
+                   posts:{
+                    orderBy:{
+                        createdAt: "desc"
+                    },
+                    include:{
+                        comment: true
+                    }
+                   }
                 }
             })
             res.status(200).json(data)

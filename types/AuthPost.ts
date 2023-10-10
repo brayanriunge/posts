@@ -11,7 +11,7 @@ export type AuthPosts = {
             createdAt: string
             id: string
             postId: string
-            title: string
+            message: string
             userId: string
         }
     }
