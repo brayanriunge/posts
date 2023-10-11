@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Toggler from "./Toggler"
 
 type EditProps={
@@ -12,6 +13,27 @@ type EditProps={
 }
 
 export default function EditPost({name, id, title, comment}:EditProps){
+  //toggle
+  const [toggle, setToggle] = useState(false)
+
+  // delete post
+  const [remove, setRemove] = useState(false)
+  const handleDelete = async()=>{
+    try {
+      const response = await fetch("http://localhost:3000/api/posts/deletePost",{
+        method: "DELETE"
+      })
+      if(response.ok){
+        setRemove(true)
+      }else{
+        throw new Error("failed to delete Post")
+      }
+    } catch (error) {
+      console.log(error)
+      
+    }
+  }
+
     return(
     <>
        <div className="bg-white my-8 p-8 rounded-lg">
@@ -28,7 +50,7 @@ export default function EditPost({name, id, title, comment}:EditProps){
             <button className="font-bold text-red-500 text-sm">Delete</button>
           </div>
         </div>
-        <Toggler/>  
+        {toggle && <Toggler/>}
     </>
        
     )
