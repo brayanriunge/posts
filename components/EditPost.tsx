@@ -47,10 +47,10 @@ export default function EditPost({name, id, title, comment}:EditProps){
             <p className="text-sm font-bold text-gray-700">
                 {comment?.length} Comments
             </p>
-            <button className="font-bold text-red-500 text-sm">Delete</button>
+            <button onClick={(e)=> setToggle(true)} className="font-bold text-red-500  text-sm">Delete </button>
           </div>
         </div>
-        {toggle && <Toggler/>}
+        {toggle && <Toggler setToggle={setToggle} handleDelete={handleDelete}/>}
     </>
        
     )
