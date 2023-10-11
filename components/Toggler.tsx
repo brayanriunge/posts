@@ -2,10 +2,10 @@ import { useState } from "react"
 import { HiOutlineX } from "react-icons/hi"
 
 type TogglerProp={
-   deletePost:()=>void 
+   handleDelete:()=>void 
    setToggle: (toggle: boolean)=> void
 }
-export default function Toggler({deletePost, setToggle}:TogglerProp){
+export default function Toggler({handleDelete, setToggle}:TogglerProp){
    
     return(
         <div onClick={(e)=>{setToggle(false)}} className="fixed bg-black/20 h-full w-full z-20 left-0 top-0">
@@ -16,7 +16,7 @@ export default function Toggler({deletePost, setToggle}:TogglerProp){
              <h3 className= "text-red-600 text-sm" >
                 Pressing the delete button will permanently delete your post 
              </h3>
-             <button className="text-white rounded-md py-2 px-4 bg-red-700">Delete Post</button>
+             <button onClick={handleDelete} className="text-white py-2 px-4 bg-red-700">Delete Post</button>
            </div>
         </div>
     )
