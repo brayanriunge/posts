@@ -2,9 +2,14 @@ import { useState } from "react"
 import Toggler from "./Toggler"
 
 
+interface Post{
+  id:string       
+  createdAt: number
+  title:   string
+}
 
 type EditProps={
-
+  post:Post
   id:string
   name:string
   title: string
@@ -13,22 +18,21 @@ type EditProps={
     postId: string
     userId: string
   }[]
+  handleDelete:()=>void
 }
 
-export default function EditPost({name, id, title, comment}:EditProps){
+export default function EditPost({name, id, post, title, comment}:EditProps){
   //toggle
   const [toggle, setToggle] = useState(false)
 
   // delete post
-  const [remove, setRemove] = useState(false)
-  const handleDelete = async()=>{
+ 
+  const handleDelete = async(id:string)=>{
     try {
-      const response = await fetch("http://localhost:3000/api/posts/${id}",{
+      const response = await fetch(`http://localhost:3000/api/posts/${id}`,{
         method: "DELETE"
       })
-      if(response.ok){
-        setRemove(true)
-      }else{
+      if(!response.ok){
         throw new Error("failed to delete Post")
       }
     } catch (error) {
@@ -36,7 +40,9 @@ export default function EditPost({name, id, title, comment}:EditProps){
       
     }
   }
-
+  const deletePost = ()=>{
+    handleDelete(post.id)
+ }
     return(
     <>
        <div className="bg-white my-8 p-8 rounded-lg">
@@ -50,10 +56,10 @@ export default function EditPost({name, id, title, comment}:EditProps){
             <p className="text-sm font-bold text-gray-700">
                 {comment?.length} Comments
             </p>
-            <button onClick={(e)=> setToggle(true)} className="font-bold text-red-500  text-sm">Delete </button>
+            <button onClick={deletePost} className="font-bold text-red-500  text-sm">Delete </button>
           </div>
         </div>
-        {toggle && <Toggler setToggle={setToggle} handleDelete={handleDelete}/>}
+        {/* {toggle && <Toggler setToggle={setToggle} handleDelete={handleDelete} post={post}/>} */}
     </>
        
     )
