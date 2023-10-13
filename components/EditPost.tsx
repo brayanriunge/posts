@@ -18,7 +18,7 @@ type EditProps={
     postId: string
     userId: string
   }[]
-  handleDelete:()=>void
+ 
 }
 
 export default function EditPost({name, id, post, title, comment}:EditProps){
@@ -32,6 +32,7 @@ export default function EditPost({name, id, post, title, comment}:EditProps){
       const response = await fetch(`http://localhost:3000/api/posts/${id}`,{
         method: "DELETE"
       })
+      console
       if(!response.ok){
         throw new Error("failed to delete Post")
       }
