@@ -10,7 +10,7 @@ interface Post{
 }
 
 type EditProps={
-  post:Post
+  
   id:string
   name:string
   title: string
@@ -19,12 +19,13 @@ type EditProps={
     postId: string
     userId: string
   }[]
- fetchPosts:()=>void
+ fetchMyPost:()=>void
 }
 
-export default function EditPost({name, id, fetchPosts, title, comment}:EditProps){
+export default function EditPost({name, id, fetchMyPost, title, comment}:EditProps){
 
   let toastPostId : string
+ 
 
   //toggle
   const [toggle, setToggle] = useState(false)
@@ -36,13 +37,13 @@ export default function EditPost({name, id, fetchPosts, title, comment}:EditProp
       const response = await fetch(`http://localhost:3000/api/posts/${id}`,{
         method: "DELETE"
       })
-      console.log(response)
       if(!response.ok){
         throw new Error("failed to delete Post")
       }else{
-        fetchPosts()
+        fetchMyPost()
         toast.success("Post has been deleted",{id: toastPostId})
       }
+      console.log(response)
     } catch (error) {
       console.log(error)
       

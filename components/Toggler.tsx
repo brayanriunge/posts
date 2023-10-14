@@ -11,6 +11,7 @@ type TogglerProp={
    id: string
    handleDelete:(id:string)=>void 
    setToggle: (toggle: boolean)=> void
+   
 }
 export default function Toggler({handleDelete,id,setToggle}:TogglerProp){
    const deletePost = ()=>{
