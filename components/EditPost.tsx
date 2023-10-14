@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Toggler from "./Toggler"
+import toast from "react-hot-toast"
 
 
 interface Post{
@@ -18,10 +19,13 @@ type EditProps={
     postId: string
     userId: string
   }[]
- 
+ fetchPosts:()=>void
 }
 
-export default function EditPost({name, id, title, comment}:EditProps){
+export default function EditPost({name, id, fetchPosts, title, comment}:EditProps){
+
+  let toastPostId : string
+
   //toggle
   const [toggle, setToggle] = useState(false)
 
@@ -35,6 +39,9 @@ export default function EditPost({name, id, title, comment}:EditProps){
       console.log(response)
       if(!response.ok){
         throw new Error("failed to delete Post")
+      }else{
+        fetchPosts()
+        toast.success("Post has been deleted",{id: toastPostId})
       }
     } catch (error) {
       console.log(error)
