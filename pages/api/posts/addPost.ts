@@ -18,8 +18,6 @@ export default async function handler(
    }
    console.log(req.body)
    const title: string= req.body.title
-  
-   
 
    //find User
    const user = await prisma.user.findUnique({
@@ -33,7 +31,6 @@ export default async function handler(
     if(title.length > 300){
      return res.status(403).json({message:"This field requires 300 characters"})
     }
-  
 
     //create post
     try {
