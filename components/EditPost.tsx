@@ -21,7 +21,7 @@ type EditProps={
  
 }
 
-export default function EditPost({name, id, post, title, comment}:EditProps){
+export default function EditPost({name, id, title, comment}:EditProps){
   //toggle
   const [toggle, setToggle] = useState(false)
 
@@ -32,7 +32,7 @@ export default function EditPost({name, id, post, title, comment}:EditProps){
       const response = await fetch(`http://localhost:3000/api/posts/${id}`,{
         method: "DELETE"
       })
-      console
+      console.log(response)
       if(!response.ok){
         throw new Error("failed to delete Post")
       }
@@ -42,7 +42,7 @@ export default function EditPost({name, id, post, title, comment}:EditProps){
     }
   }
   const deletePost = ()=>{
-    handleDelete(post.id)
+    handleDelete(id)
  }
     return(
     <>

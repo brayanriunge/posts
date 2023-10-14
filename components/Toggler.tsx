@@ -8,13 +8,13 @@ interface Post{
 }
 
 type TogglerProp={
-   post: Post
+   id: string
    handleDelete:(id:string)=>void 
    setToggle: (toggle: boolean)=> void
 }
-export default function Toggler({handleDelete, post,setToggle}:TogglerProp){
+export default function Toggler({handleDelete,id,setToggle}:TogglerProp){
    const deletePost = ()=>{
-      handleDelete(post.id)
+      handleDelete(id)
    }
    
     return(
