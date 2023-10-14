@@ -41,9 +41,7 @@ export default function EditPost({name, id, title, comment}:EditProps){
       
     }
   }
-  const deletePost = ()=>{
-    handleDelete(id)
- }
+ 
     return(
     <>
        <div className="bg-white my-8 p-8 rounded-lg">
@@ -57,10 +55,10 @@ export default function EditPost({name, id, title, comment}:EditProps){
             <p className="text-sm font-bold text-gray-700">
                 {comment?.length} Comments
             </p>
-            <button onClick={deletePost} className="font-bold text-red-500  text-sm">Delete </button>
+            <button onClick={(e)=>{setToggle(true)}} className="font-bold text-red-500  text-sm">Delete </button>
           </div>
         </div>
-        {/* {toggle && <Toggler setToggle={setToggle} handleDelete={handleDelete} post={post}/>} */}
+        {toggle && <Toggler id={id} setToggle={setToggle} handleDelete={handleDelete} />}
     </>
        
     )
