@@ -6,7 +6,7 @@ import Link from "next/link"
 //     id:string
 //     comments: string
 // }
-export default function Post({name, postTitle, id,comments}:any){
+export default function Post({name, postTitle, id,comment}:any){
     return(
         <div className="my-8 p-8 mb-0 rounded-xl bg-white">
             <div className="flex items-center gap-2">
@@ -19,7 +19,7 @@ export default function Post({name, postTitle, id,comments}:any){
             </div>
             <div className="flex items-center gap-4 cursor-pointer">
                 <Link href={`/post/${id}`}>
-                    <p className="text-gray-700 text-sm font-bold">{comments.length}Comments</p>
+                    <p className="text-gray-700 text-sm font-bold">Comments</p>
                 </Link>
             </div>
         </div>

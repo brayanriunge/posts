@@ -3,12 +3,14 @@ import Layout from "@/components/Layout"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { PostData } from ".."
+import Post from "@/components/Post"
+
 
 
 export default function PostDetails(){
     const router = useRouter()
     const{slug} = router.query
-    const [postData, setPostData]= useState<PostData[]>([])
+    const [postData, setPostData]= useState<PostData>()
 
     const fetchDetails = async (slug: string)=>{
         try {
@@ -28,7 +30,8 @@ export default function PostDetails(){
     },[slug])
     return(
         <Layout>
-            <div>hey</div>
+           {/* {postData.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} comment={post.comment}/>)} */}
+         <Post name={postData?.user.name} postTitle={postData?.title} id={postData?.id} comment={postData?.comment}/>
         </Layout>
     )
 }

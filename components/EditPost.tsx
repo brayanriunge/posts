@@ -10,7 +10,6 @@ interface Post{
 }
 
 type EditProps={
-  
   id:string
   name:string
   title: string
