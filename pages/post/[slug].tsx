@@ -1,4 +1,8 @@
 
+import Layout from "@/components/Layout"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
+
 const fetchDetails = async (slug: string)=>{
     try {
      const response = await fetch(`http://localhost:3000/api/posts/${slug}`)
@@ -10,7 +14,16 @@ const fetchDetails = async (slug: string)=>{
 }
 
 export default function PostDetails(){
+    const router = useRouter()
+    const{slug} = router.query
+    useEffect(()=>{
+        if(slug){
+            fetchDetails(slug as string)
+        }
+    },[slug])
     return(
-        <div>hey</div>
+        <Layout>
+            <div>hey</div>
+        </Layout>
     )
 }

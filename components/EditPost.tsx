@@ -34,7 +34,7 @@ export default function EditPost({name, id, fetchMyPost, title, comment}:EditPro
  
   const handleDelete = async(id:string)=>{
     try {
-      const response = await fetch(`http://localhost:3000/api/posts/${id}`,{
+      const response = await fetch(`http://localhost:3000/api/posts/delete/${id}`,{
         method: "DELETE"
       })
       if(!response.ok){
