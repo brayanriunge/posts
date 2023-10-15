@@ -19,7 +19,7 @@ export interface PostData{
     createdAt: string,
     postId: string,
     userId: string,
-  }
+  }[]
 }
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
    <Layout >
    
     <AddPost fetchPosts={fetchPosts}/>
-    {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} comments={post.comment}  />)}
+    {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} comment={post.comment}  />)}
    </Layout>
   )
 }

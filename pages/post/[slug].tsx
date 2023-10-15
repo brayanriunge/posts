@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { PostData } from ".."
 import Post from "@/components/Post"
+import AddComment from "@/components/AddComment"
 
 
 
@@ -32,6 +33,7 @@ export default function PostDetails(){
         <Layout>
            {/* {postData.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} comment={post.comment}/>)} */}
          <Post name={postData?.user.name} postTitle={postData?.title} id={postData?.id} comment={postData?.comment}/>
+         <AddComment/>
         </Layout>
     )
 }

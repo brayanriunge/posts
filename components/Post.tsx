@@ -1,11 +1,6 @@
 import Link from "next/link"
 
-// type props={
-//     name: string
-//     postTitle: string
-//     id:string
-//     comments: string
-// }
+
 export default function Post({name, postTitle, id,comment}:any){
     return(
         <div className="my-8 p-8 mb-0 rounded-xl bg-white">
