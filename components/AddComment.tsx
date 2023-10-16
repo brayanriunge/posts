@@ -23,12 +23,12 @@ export default function AddComment(){
             if(!response.ok){
                 throw new Error(`Http Error! ${response.status}`)
             }else{
-                
+               
                 toast.success("post has been made", {id: toastPostId})
             }
             const data = await response.json()
             console.log(data)
-            return data
+            return(data)   
         }catch(error){
             console.log("Error", error)
         }

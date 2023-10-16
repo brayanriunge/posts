@@ -32,7 +32,6 @@ export default async function handler(
 
     //create post
     try {
-      
      const result = await prisma.comment.create({
         data:{
             message,
