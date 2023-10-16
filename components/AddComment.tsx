@@ -6,7 +6,7 @@ export default function AddComment(){
     const [isDisabled, setIsDisabled]= useState(false)
     let toastPostId : string
 
-    async function  createPost(e: React.FormEvent){
+    async function  createComment(e: React.FormEvent){
         e.preventDefault()
         toast.loading("creating post", {id: toastPostId})
         setIsDisabled(false)
@@ -37,7 +37,7 @@ export default function AddComment(){
 
 
     return(
-       <form className="my-2">
+       <form className="my-2" onSubmit={createComment}>
         <h3>Add a Comment</h3>
         <div className=" flex flex-col my-8">
             <input 
