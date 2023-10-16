@@ -15,12 +15,14 @@ export default async function handler(
     return res.status(401).json({message:"You must be logged in first."})
    }
    console.log(req.body)
-   const {message}= req.body
+   const {message }= req.body
+   const {postId} = req.body
 
    //find User
    const prismaUser= await prisma.user.findUnique({
     where: { email: session?.user?.email as string}
    })
+  
 
     // check message
     if(!message){
@@ -34,9 +36,9 @@ export default async function handler(
     try {
      const result = await prisma.comment.create({
         data:{
-            message,
-            userId: prismaUser?.id as string,
-            postId: prismaUser?.id as string
+          message,
+          userId: prismaUser?.id as string,
+          postId,
         }
      })
      console.log(result)

@@ -20,12 +20,9 @@ export default function AddComment(){
                 },
                 body: JSON.stringify({message})
             })
-            if(!response.ok){
-                throw new Error(`Http Error! ${response.status}`)
-            }else{
-               
-                toast.success("post has been made", {id: toastPostId})
-            }
+           if(response.ok){
+            return (console.log("status 200 OKAY"))
+           }
             const data = await response.json()
             console.log(data)
             return(data)   
