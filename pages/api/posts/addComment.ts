@@ -12,7 +12,9 @@ export default async function handler(
         if(!session){
             return res.status(401).json({message:"You must be logged in "})
         }
-        const {message, postId} = req.body
+        const {message} = req.body
+        const postId = req.body.id as string 
+        console.log("PostId:", postId)
 
         //find user
         const prismaUser = await prisma.user.findUnique({
@@ -29,6 +31,7 @@ export default async function handler(
 
         //create comment
         try {
+             
             const result = await prisma.comment.create({
                 data:{
                     message,
@@ -39,6 +42,7 @@ export default async function handler(
             console.log(result)
             return res.status(200).json(result)
         } catch (error) {
+            console.error(error)
             return res.status(403).json({message:"An error occurred while creating comment"})
         } 
     }

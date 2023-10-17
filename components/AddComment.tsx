@@ -1,10 +1,11 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-export default function AddComment(){
+export default function AddComment({postId}: any){
     const [message, setMessage]= useState("")
     const [isDisabled, setIsDisabled]= useState(false)
     let toastPostId : string
+
 
     async function  createComment(e: React.FormEvent){
         e.preventDefault()
@@ -18,7 +19,7 @@ export default function AddComment(){
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({message})
+                body: JSON.stringify({message, id: postId})
             })
             if(!response.ok){
                 throw new Error(`Http Error! ${response.status}`)

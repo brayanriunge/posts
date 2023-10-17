@@ -14,7 +14,7 @@ export default function Post({name, postTitle, id,comment}:any){
             </div>
             <div className="flex items-center gap-4 cursor-pointer">
                 <Link href={`/post/${id}`}>
-                    <p className="text-gray-700 text-sm font-bold">Comments</p>
+                    <p className="text-gray-700 text-sm font-bold"> Comments</p>
                 </Link>
             </div>
         </div>

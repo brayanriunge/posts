@@ -33,7 +33,7 @@ export default function PostDetails(){
         <Layout>
            {/* {postData.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} comment={post.comment}/>)} */}
          <Post name={postData?.user.name} postTitle={postData?.title} id={postData?.id} comment={postData?.comment}/>
-         <AddComment/>
+         <AddComment postId= {slug}/>
         </Layout>
     )
 }
