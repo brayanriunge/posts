@@ -1,11 +1,11 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
-type Props={
-    postId:string
-    fetchDetails: ()=> void
-}
+// type Props={
+//     postId:string
+//     fetchDetails: ()=> void
+// }
 
-export default function AddComment({postId, fetchDetails}: any){
+export default function AddComment({postId, fetchDetails}:any){
     const [message, setMessage]= useState("")
     const [isDisabled, setIsDisabled]= useState(false)
     let toastPostId : string

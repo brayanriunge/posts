@@ -21,7 +21,7 @@ export interface PostData{
     createdAt: string,
     postId: string,
     userId: string,
-    message:string,
+    message:string
     user:{
       name: string,
       email: string,
