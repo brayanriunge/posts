@@ -49,10 +49,12 @@ export default function Home() {
   },[])
 
   return (
-   <Layout >
-   
+   <Layout  >
+    <div className = "md:h-full">
     <AddPost fetchPosts={fetchPosts}/>
     {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} comment={post.comment}  />)}
+    </div>
+   
    </Layout>
   )
 }
