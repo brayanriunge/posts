@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
    <Layout  >
-    <div className = "md:h-full">
+    <div className = "mx-auto  w-5/6 py-20">
     <AddPost fetchPosts={fetchPosts}/>
     {posts.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} id={post.id} comment={post.comment}  />)}
     </div>

@@ -20,9 +20,12 @@ export default function MyPost(){
      },[])
      
     return(
-        <div>
+        <section className="mx-auto h-screen w-5/6 ">
+            <div >
             hey
             {editPosts?.posts.map((post)=> <EditPost fetchMyPost={fetchMyPost} key={post.id} id={post.id} name={editPosts.name} title={post.title} comment={post.comment}/>)}
         </div>
+        </section>
+        
     )
 }

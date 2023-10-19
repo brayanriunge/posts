@@ -35,7 +35,7 @@ export default function PostDetails(){
     return(
         <Layout>
             {postData && (
-                <>
+                <section className="mx-auto h-screen w-5/6 ">
                 {/* {postData?.comment.map((post)=> <Post name={post.user.name} id={postData.id} postTitle={postData.title} comment={postData.comment}/>)} */}
                  <Post name={postData?.user.name} postTitle={postData?.title} id={postData?.id} comment={postData?.comment}/>
                  <AddComment postId= {slug} fetchDetails={fetchDetails}/>
@@ -50,7 +50,7 @@ export default function PostDetails(){
                         </div>
                     </div>
                  ))}
-                </>
+                </section>
                  
             )}
           
