@@ -25,15 +25,16 @@ export default function PostDetails(){
     }
     
     useEffect(()=>{
-        if(slug){
-            fetchDetails(slug as string)
+        if (slug && typeof slug === 'string') {
+            fetchDetails(slug)
         }
     },[slug])
+   
     return(
         <Layout>
            {/* {postData.map((post)=> <Post key={post.id} name={post.user.name} postTitle={post.title} comment={post.comment}/>)} */}
          <Post name={postData?.user.name} postTitle={postData?.title} id={postData?.id} comment={postData?.comment}/>
-         <AddComment postId= {slug}/>
+         <AddComment postId= {slug  as String} fetchDetails={fetchDetails}/>
          {postData?.comment.map((comment)=>(
             <div className="p-8 my-6 rounded-md bg-white" key={comment.id}>
                 <div className="flex items-center gap-2">

@@ -1,7 +1,11 @@
 import { useState } from "react"
 import toast from "react-hot-toast"
+type Props={
+    postId:string
+    fetchDetails: ()=> void
+}
 
-export default function AddComment({postId}: any){
+export default function AddComment({postId, fetchDetails}: any){
     const [message, setMessage]= useState("")
     const [isDisabled, setIsDisabled]= useState(false)
     let toastPostId : string
@@ -24,8 +28,8 @@ export default function AddComment({postId}: any){
             if(!response.ok){
                 throw new Error(`Http Error! ${response.status}`)
             }else{
-               
                 toast.success("post has been made", {id: toastPostId})
+                fetchDetails()
             }
             const data = await response.json()
             console.log(data)
