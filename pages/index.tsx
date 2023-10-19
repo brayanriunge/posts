@@ -10,15 +10,23 @@ import Post from '@/components/Post'
 export interface PostData{
   id: string,
   title: string,
-  createdAt: string,
+  updatedAt: string,
   user:{
     name:string,
+    email:string,
+    id: string,
   },
   comment: {
     id: string,
     createdAt: string,
     postId: string,
     userId: string,
+    message:string,
+    user:{
+      name: string,
+      email: string,
+      id: string,
+    }
   }[]
 }
 
