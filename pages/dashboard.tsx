@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout"
-import MyPost from "@/components/MyPost"
+import MyPost from "@/components/sections/MyPost"
 import { useSession } from "next-auth/react"
 import { redirect } from "next/dist/server/api-utils"
 import { useRouter } from "next/router"

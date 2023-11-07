@@ -3,8 +3,8 @@ import Layout from "@/components/Layout"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { PostData } from ".."
-import Post from "@/components/Post"
-import AddComment from "@/components/AddComment"
+import Post from "@/components/sections/Post"
+import AddComment from "@/components/sections/AddComment"
 
 
 

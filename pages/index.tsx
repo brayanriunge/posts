@@ -1,9 +1,9 @@
 
 import Layout from '@/components/Layout'
-import AddPost from "@/components/AddPost"
+import AddPost from "@/components/sections/AddPost"
 
 import { useEffect, useState } from 'react'
-import Post from '@/components/Post'
+import Post from '@/components/sections/Post'
 
 
 
